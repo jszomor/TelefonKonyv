@@ -17,18 +17,19 @@ namespace TelefonKonyv
       public string Number;
       public int Age;
     }
-    public Entrik[] entries;
+    public Entrik[] entries = new Entrik[1000];
     public int NumberOfEntries = 0;
     string fileName;
+    public int i = 0;
     public TKonyv(string file)
     {
       fileName = file;
-      entries = new Entrik[1000];
+      //entries = new Entrik[1000];
 
       StreamReader fileReader = new StreamReader(file);
       string sor;
       string[] adatok;
-      int i = 0;
+      //int i = 0;
       while ((sor = fileReader.ReadLine()) != null)
       {
         adatok = sor.Split('\t');
@@ -51,6 +52,25 @@ namespace TelefonKonyv
         Console.WriteLine("{0,3} {1,-20} {2,-30} {3,-15} {4,3}",
           entries[i].Id, entries[i].Name, entries[i].Address, entries[i].Number, entries[i].Age);
       }
+    }
+    public void Insert()
+    {    
+        //Console.WriteLine("Kérem az Id-t:");
+        entries[i].Id = i+1;
+        Console.WriteLine("Kérem a nevet:");
+        entries[i].Name = Console.ReadLine();
+        Console.WriteLine("Kérem a címet:");
+        entries[i].Address = Console.ReadLine();
+        Console.WriteLine("Kérem a telefonszámot:");
+        entries[i].Number = Console.ReadLine();
+        Console.WriteLine("Kérem a kort");
+        entries[i].Age = Convert.ToInt32(Console.ReadLine());
+        NumberOfEntries++;
+        i++;      
+    }
+    public void Delete()
+    {
+
     }
     ~TKonyv()
     {
