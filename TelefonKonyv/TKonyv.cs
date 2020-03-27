@@ -57,20 +57,22 @@ namespace TelefonKonyv
     {    
         //Console.WriteLine("Kérem az Id-t:");
         entries[i].Id = i+1;
-        Console.WriteLine("Kérem a nevet:");
+        Console.WriteLine("Kérem a nevet.");
         entries[i].Name = Console.ReadLine();
-        Console.WriteLine("Kérem a címet:");
+        Console.WriteLine("Kérem a címet.");
         entries[i].Address = Console.ReadLine();
-        Console.WriteLine("Kérem a telefonszámot:");
+        Console.WriteLine("Kérem a telefonszámot.");
         entries[i].Number = Console.ReadLine();
-        Console.WriteLine("Kérem a kort");
+        Console.WriteLine("Kérem a kort.");
         entries[i].Age = Convert.ToInt32(Console.ReadLine());
         NumberOfEntries++;
         i++;      
     }
     public void Delete()
     {
-
+      Console.WriteLine("Kérem adja meg a törölni kívánt személy Id-ját.");
+      int deleteId = int.Parse(Console.ReadLine());
+      entries = entries.Where(x => x.Id != deleteId).ToArray();
     }
     ~TKonyv()
     {

@@ -27,7 +27,7 @@ namespace TelefonKonyv
         }
         else if (userSelect == "2")
         {
-
+          tKonyv.Delete();
         }
         else if (userSelect == "3")
         {
