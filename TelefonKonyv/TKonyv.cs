@@ -47,7 +47,7 @@ namespace TelefonKonyv
     }
     public void Print()
     {
-      for (int i = 0; i < NumberOfEntries; i++)
+      for (int i = 0; i < entries.Length; i++)
       {
         Console.WriteLine("{0,3} {1,-20} {2,-30} {3,-15} {4,3}",
           entries[i].Id, entries[i].Name, entries[i].Address, entries[i].Number, entries[i].Age);
@@ -77,7 +77,8 @@ namespace TelefonKonyv
     ~TKonyv()
     {
       StreamWriter streamWriter = new StreamWriter(fileName, false);
-      for (int i = 0; i < NumberOfEntries; i++)
+      entries = entries.Where(x => x.Id != 0).ToArray();
+      for (int i = 0; i < entries.Length; i++)
       {
         streamWriter.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}",
           entries[i].Id, entries[i].Name, entries[i].Address, entries[i].Number, entries[i].Age);
