@@ -11,11 +11,13 @@ namespace TelefonKonyv
     static void Main(string[] args)
     {
       string file = "TelefonKonyv.txt";
-      TKonyv tKonyv = new TKonyv(file);
+      string fileEmail = "TelefonKonyvEmail.txt";
+      NewTkonyv tKonyv = new NewTkonyv(fileEmail, file);
       bool end = true;
       while(end)
       {
         tKonyv.Print();
+        Console.WriteLine($"Legmagasabb kor: {tKonyv.MaxAge}");
         Console.WriteLine("Opciók:");
         Console.WriteLine("Hozzáad >> 1");
         Console.WriteLine("Töröl >> 2");
@@ -27,13 +29,14 @@ namespace TelefonKonyv
         }
         else if (userSelect == "2")
         {
-          tKonyv.Delete();
+          Console.WriteLine("Kérem adja meg a törölni kívánt személy Id-ját.");
+          int deleteId = int.Parse(Console.ReadLine());
+          tKonyv.Delete(deleteId);
         }
         else if (userSelect == "3")
         {
           end = false;
         }
-
         Console.Clear();
       }
       Console.ReadKey();
